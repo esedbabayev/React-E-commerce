@@ -15,21 +15,28 @@ const styles = {
 };
 
 const Colors = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const dropDownHandler = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div>
-      <button className={styles.btn}>
+      <button onClick={dropDownHandler} className={styles.btn}>
         <span className="font-bold">Size</span>
         <div>
-          <Chevron className={`${styles.icon} `} color="black" />
+          <Chevron className={`${styles.icon} ${isOpen ? "rotate-0" : "rotate-180"}`} color="black" />
         </div>
       </button>
-      <ul className={styles.ul}>
-        <Size title="Extra Small">xs</Size>
-        <Size title="Small">s</Size>
-        <Size title="Medium">m</Size>
-        <Size title="Large">l</Size>
-        <Size title="Extra Large">xl</Size>
-      </ul>
+      {isOpen && (
+        <ul className={styles.ul}>
+          <Size title="Extra Small">xs</Size>
+          <Size title="Small">s</Size>
+          <Size title="Medium">m</Size>
+          <Size title="Large">l</Size>
+          <Size title="Extra Large">xl</Size>
+        </ul>
+      )}
     </div>
   );
 };

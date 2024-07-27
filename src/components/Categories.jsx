@@ -1,3 +1,9 @@
+// Hooks
+import { useState } from "react";
+
+// Redux Hooks
+import { useSelector } from "react-redux";
+
 // Icons
 import Chevron from "../icons/chevron";
 
@@ -12,19 +18,32 @@ const styles = {
 };
 
 const Categories = () => {
+  const categories = useSelector(state => state.categories.categories)
+  
+  const [isOpen, setIsOpen] = useState(false);
+
+  const dropDownHandler = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="border-b">
-      <button className={styles.btn}>
+      <button onClick={dropDownHandler} className={styles.btn}>
         <span className="font-bold">Category</span>
         <div>
-          <Chevron className={`${styles.icon} `} color="black" />
+          <Chevron
+            className={`${styles.icon} ${isOpen ? "rotate-0" : "rotate-180"}`}
+            color="black"
+          />
         </div>
       </button>
-      <ul className={styles.ul}>
-        <Category />
-        <Category />
-        <Category />
-      </ul>
+      {isOpen && (
+        <ul className={styles.ul}>
+          {categories.map(category => (
+            <Category key={category}>{category}</Category>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

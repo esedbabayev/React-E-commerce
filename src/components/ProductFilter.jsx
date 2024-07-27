@@ -7,7 +7,21 @@ import Cart from "../images/cart.png";
 // Hooks
 import { useState } from "react";
 
-const ProductFilter = (props) => {
+const ProductFilter = ({ product }) => {
+  const [count, setCount] = useState(1);
+
+  const incrementHandler = () => {
+    if (count < 10) {
+      setCount(+count + 1);
+    }
+  };
+
+  const decrementHandler = () => {
+    if (count > 1) {
+      setCount(+count - 1);
+    }
+  };
+
   return (
     <div className="col-span-4">
       {/* Color */}
@@ -15,7 +29,7 @@ const ProductFilter = (props) => {
         <h3 className="text-xs font-bold mb-3">Product color</h3>
         <div
           style={{
-            backgroundColor: "red",
+            backgroundColor: product?.color,
           }}
           className="h-8 w-8 rounded-full"
         ></div>
@@ -33,14 +47,21 @@ const ProductFilter = (props) => {
       </div>
       {/* Counter */}
       <div className="flex items-center gap-6 font-black mb-8">
-        <button className="text-3xl">-</button>
+        <button onClick={decrementHandler} className="text-3xl">
+          -
+        </button>
         <input
           type="number"
           min="1"
           max="100"
           className="border h-14 text-2xl text-center rounded-md"
+          value={+count}
+          readOnly
+          // onChange={}
         />
-        <button className="text-3xl">+</button>
+        <button onClick={incrementHandler} className="text-3xl">
+          +
+        </button>
       </div>
       {/* Add To Cart */}
       <button className="w-full  flex rounded-lg font-black uppercase duration-200 justify-between items-center bg-[#1d1d1d] hover:bg-[#0075ff] text-white text-xl px-8 py-6">

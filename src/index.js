@@ -6,9 +6,15 @@ import App from "./App";
 // Router
 import { BrowserRouter as Router } from "react-router-dom";
 
+// Redux
+import { Provider } from "react-redux";
+import store from "./store";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </Router>
 );
