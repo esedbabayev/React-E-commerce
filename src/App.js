@@ -8,6 +8,7 @@ import Header from "./components/Header";
 // Pages
 import ProductsPage from "./pages/ProductsPage";
 import ProductPage from "./pages/ProductPage";
+import CartPage from "./pages/CartPage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/" element={<h1>Home</h1>} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:id" element={<ProductPage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </main>
     </Container>
