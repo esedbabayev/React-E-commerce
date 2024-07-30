@@ -13,15 +13,16 @@ const Category = ({ children }) => {
 
   const isSelected = selectedCategories.includes(children);
 
-  console.log(children, isSelected);
-
   const selectCategory = () => {
     dispatch(selectCategoryAction(children));
   };
 
   return (
-    <li onClick={selectCategory} className={`${isSelected && "font-black"} cursor-pointer text-black`}>
-      {children}
+    <li
+      onClick={selectCategory}
+      className={`${isSelected && "font-black"} cursor-pointer text-black`}
+    >
+      {children.replaceAll("_", " & ")}
     </li>
   );
 };

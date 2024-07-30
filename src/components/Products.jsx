@@ -9,29 +9,52 @@ import { setCategories } from "../slices/categories.slice";
 import { setColors } from "../slices/colors.slice";
 
 // Hooks
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Products = () => {
   const [products, setProduts] = useState();
 
   const dispatch = useDispatch();
 
-  const getProducts = async () => {
-    const response = await fetch("http://localhost:3000/products");
-    const data = await response.json();
+  const selectedCategories = useSelector(
+    (state) => state.categories.selectedCategories
+  );
+  const selectedColors = useSelector((state) => state.colors.selectedColors);
+  const selectedSizes = useSelector((state) => state.sizes.selectedSizes);
 
-    setProduts(data);
+  const getProducts = async () => {
+    let url = "http://localhost:3000/products?";
+
+    const categoryQueries =
+      selectedCategories.length > 0
+        ? selectedCategories.map((category) => `category=${category}`).join("&")
+        : "";
+
+    const colorQueries =
+      selectedColors.length > 0
+        ? selectedColors.map((color) => `color=${color}`).join("&")
+        : "";
+
+    const queries = [categoryQueries, colorQueries].filter(Boolean).join("&");  
+
+    url += queries;
+
+    const response = await fetch(url);
+    const data = await response.json();
 
     const categories = [...new Set(data.map((product) => product.category))];
     const colors = [...new Set(data.map((product) => product.color))];
 
-    dispatch(setCategories(categories));
-    dispatch(setColors(colors));
+    if (url === "http://localhost:3000/products?") {
+      dispatch(setCategories(categories));
+      dispatch(setColors(colors));
+    }
+    setProduts(data);
   };
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [selectedCategories, selectedColors]);
 
   return (
     <div className="col-span-9">
@@ -40,7 +63,7 @@ const Products = () => {
       </div>
       <div className="grid grid-cols-12 gap-5">
         {products?.map((product) => (
-          <Product key={product.id} product={product}/>
+          <Product key={product.id} product={product} />
         ))}
       </div>
     </div>

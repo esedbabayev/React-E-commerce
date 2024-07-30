@@ -63,7 +63,7 @@ const ProductFilter = ({ product }) => {
         <h3 className="text-xs font-bold mb-3">Product color</h3>
         <div
           style={{
-            backgroundColor: product?.color,
+            backgroundColor: `#${product?.color}`,
           }}
           className="h-8 w-8 rounded-full"
         ></div>

@@ -13,7 +13,9 @@ const Product = ({ product }) => {
         <div className="flex justify-between font-bold">
           <div>
             <h1 className="text-lg">{product.name}</h1>
-            <p className=" text-neutral-500">{product.category}</p>
+            <p className=" text-neutral-500">
+              {product.category.replaceAll("_", " & ")}
+            </p>
           </div>
           <h1 className="text-lg">
             <span>{product.price}</span>

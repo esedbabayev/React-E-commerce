@@ -15,16 +15,18 @@ const CartItem = ({ cartItem }) => {
   const dispatch = useDispatch();
 
   const incrementHandler = () => {
+    const newQuantity = +count + 1;
     if (count < 10) {
       setCount(+count + 1);
-      dispatch(changeProductAmount({ cartItem, newQuantity: +count }));
+      dispatch(changeProductAmount({ cartItem, newQuantity }));
     }
   };
 
   const decrementHandler = () => {
+    const newQuantity = count - 1;
     if (count > 1) {
       setCount(+count - 1);
-      dispatch(changeProductAmount({ cartItem, newQuantity: +count }));
+      dispatch(changeProductAmount({ cartItem, newQuantity }));
     }
   };
 
@@ -41,12 +43,12 @@ const CartItem = ({ cartItem }) => {
         <div>
           <h3 className="text-xl font-bold">{cartItem.product?.name}</h3>
           <h4 className="font-bold text-neutral-500">
-            {cartItem.product?.category}
+            {cartItem.product?.category.replaceAll("_", " & ")}
           </h4>
         </div>
         <div className="flex gap-5">
           <div
-            style={{ backgroundColor: cartItem.product?.color }}
+            style={{ backgroundColor: `#${cartItem.product?.color}` }}
             className={`h-8 w-8 border flex items-center justify-center rounded-full cursor-pointer`}
           ></div>
           <div className="font-bold bg-[#1D1D1D] uppercase text-white w-9 h-9 flex items-center justify-center rounded-lg">

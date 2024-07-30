@@ -20,7 +20,7 @@ const Color = ({ color }) => {
   return (
     <li
       onClick={selectColor}
-      style={{ backgroundColor: color }}
+      style={{ backgroundColor: `#${color}` }}
       className={`h-8 w-8 border flex items-center justify-center rounded-full cursor-pointer`}
     >
       {isSelected && (
