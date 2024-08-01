@@ -10,6 +10,9 @@ import { useDispatch } from "react-redux";
 // Actions
 import { removeFromCart, changeProductAmount } from "../slices/cart.slice";
 
+// Link
+import { Link } from "react-router-dom";
+
 const CartItem = ({ cartItem }) => {
   const [count, setCount] = useState(cartItem.quantity);
   const dispatch = useDispatch();
@@ -20,6 +23,7 @@ const CartItem = ({ cartItem }) => {
       setCount(+count + 1);
       dispatch(changeProductAmount({ cartItem, newQuantity }));
     }
+    editCartItem(newQuantity);
   };
 
   const decrementHandler = () => {
@@ -28,20 +32,42 @@ const CartItem = ({ cartItem }) => {
       setCount(+count - 1);
       dispatch(changeProductAmount({ cartItem, newQuantity }));
     }
+    editCartItem(newQuantity);
   };
 
   const removeFromCartHandler = () => {
     dispatch(removeFromCart(cartItem));
+    deleteCartItem();
+  };
+
+  const deleteCartItem = async () => {
+    await fetch(`http://localhost:3000/carts/${cartItem.id}`, {
+      method: "DELETE",
+    });
+  };
+
+  const editCartItem = async (quantity) => {
+    await fetch(`http://localhost:3000/carts/${cartItem.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ quantity }),
+    });
   };
 
   return (
     <div className="flex gap-5 h-96 min-w-fit">
       <div className="border border-neutral-200 rounded-lg">
-        <img src={cartItem.product?.image} alt="" className="h-full" />
+        <Link to={`/products/${cartItem.product.id}`}>
+          <img src={cartItem.product?.image} alt="" className="h-full" />
+        </Link>
       </div>
       <div className="space-y-5">
         <div>
-          <h3 className="text-xl font-bold">{cartItem.product?.name}</h3>
+          <Link to={`/products/${cartItem.product.id}`}>
+            <h3 className="text-xl font-bold">{cartItem.product?.name}</h3>
+          </Link>
           <h4 className="font-bold text-neutral-500">
             {cartItem.product?.category.replaceAll("_", " & ")}
           </h4>

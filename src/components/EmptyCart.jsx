@@ -15,7 +15,7 @@ const EmptyCart = () => {
         something else
       </p>
       <button className="uppercase font-black text-white bg-black text-medium px-4 py-3 rounded-lg transition-all duration-200 hover:bg-[#0075ff]">
-        browse products
+        clear filters
       </button>
     </div>
   );

@@ -17,11 +17,18 @@ import {
   changeProductAmount,
 } from "../slices/cart.slice";
 
+// UUID
+import { v4 as uuidv4 } from "uuid";
+
+import axios from "axios";
+
 const ProductFilter = ({ product }) => {
   const [count, setCount] = useState(1);
   const [selectedSize, setSelectedSize] = useState(null);
 
   const dispatch = useDispatch();
+
+  const userId = JSON.parse(localStorage.getItem("userId"));
 
   const sizes = useSelector((state) => state.sizes.sizes);
 
@@ -41,7 +48,7 @@ const ProductFilter = ({ product }) => {
     setSelectedSize(size);
   };
 
-  const addToCardHandler = () => {
+  const addToCardHandler = async () => {
     if (!selectedSize) {
       alert("Please select a size");
       return;
@@ -51,7 +58,14 @@ const ProductFilter = ({ product }) => {
       quantity: +count,
       size: selectedSize,
       product,
+      id: uuidv4(),
+      userId,
     };
+
+    const { data } = await axios.post(
+      "http://localhost:3000/carts",
+      selectedProduct
+    );
 
     dispatch(addToCard(selectedProduct));
   };

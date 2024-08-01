@@ -25,6 +25,10 @@ const Header = () => {
     (cartItem) => cartItem.quantity
   );
 
+  const logout = () => {
+    localStorage.removeItem("userId");
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -49,9 +53,9 @@ const Header = () => {
               Accounts<span className={styles.span}>.</span>
             </li>
           </Link>
-          <Link to="/help">
-            <li className={styles.li}>
-              Help<span className={styles.span}>.</span>
+          <Link to="/sign-in">
+            <li onClick={logout} className={styles.li}>
+              Logout<span className={styles.span}>.</span>
             </li>
           </Link>
         </ul>

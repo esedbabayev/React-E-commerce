@@ -136,6 +136,52 @@
       "image": "https://static.bershka.net/assets/public/f15f/7ae5/667248c2ae7b/8bc87b6f46eb/02285498754-a4o/02285498754-a4o.jpg?ts=1719920916446&w=800"
     }
   ],
-
-  "cart": []
+  "carts": [
+    {
+      "id": "884f99af-8210-4f98-9262-21a0a89f479d",
+      "quantity": 2,
+      "size": "xs",
+      "product": {
+        "id": "2",
+        "name": "Wide fit tailored Bermuda shorts",
+        "price": 29.99,
+        "color": "000",
+        "size": ["xs", "m", "xl"],
+        "category": "Shorts",
+        "image": "https://static.bershka.net/4/photos2/2024/V/0/2/p/3344/602/800/3344602800_2_4_0.jpg?imwidth=800&ts=1715072276437"
+      },
+      "userId": "860fb82a-52f8-4b12-9182-fe95230c321a"
+    },
+    {
+      "id": "8f3bf0af-05d7-45dc-9b74-3582a30a9282",
+      "quantity": 5,
+      "size": "m",
+      "product": {
+        "id": "5",
+        "name": "Basic swimming trunks",
+        "price": 15.99,
+        "color": "BACCE2",
+        "size": ["xs", "s", "m"],
+        "category": "Swimwear",
+        "image": "https://static.bershka.net/4/photos2/2024/V/0/2/p/4790/305/403/4790305403_2_4_0.jpg?imwidth=800&ts=1702997166625"
+      },
+      "userId": "9271d961-ecc7-47aa-981f-fae24124b640"
+    }
+  ],
+  "users": [
+    {
+      "id": "860fb82a-52f8-4b12-9182-fe95230c321a",
+      "firstName": "a",
+      "lastName": "a",
+      "userName": "a",
+      "password": "a"
+    },
+    {
+      "id": "9271d961-ecc7-47aa-981f-fae24124b640",
+      "firstName": "s",
+      "lastName": "s",
+      "userName": "s",
+      "password": "s"
+    }
+  ]
 }
