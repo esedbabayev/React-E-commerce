@@ -12,6 +12,8 @@ import Logo from "../images/Logo.png";
 import SignUpHero from "../images/sign-up-hero.png";
 
 const SignUp = () => {
+  document.title = "Sign Up"
+
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const userNameRef = useRef();

@@ -3,7 +3,9 @@ import CartHeader from "../components/CartHeader";
 import CartItems from "../components/CartItems";
 import CartBottom from "../components/CartBottom";
 
-const cartPage = () => {
+const CartPage = () => {
+  document.title = "Cart"
+
   return (
     <div className="space-y-10">
       {/* {Cart Top }*/}
@@ -16,4 +18,4 @@ const cartPage = () => {
   );
 };
 
-export default cartPage;
+export default CartPage;

@@ -9,6 +9,8 @@ import SignInHero from "../images/sign-in-hero.png";
 import Logo from "../images/Logo.png";
 
 const SignIn = () => {
+  document.title = "Sign In"
+
   const userNameRef = useRef();
   const passwordRef = useRef();
 

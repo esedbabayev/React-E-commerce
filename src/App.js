@@ -4,6 +4,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 // Components
 import Container from "./components/Container";
 import Header from "./components/Header";
+import Layout from "./components/Layout";
 
 // Pages
 import ProductsPage from "./pages/ProductsPage";
@@ -22,7 +23,6 @@ import { useDispatch } from "react-redux";
 import { setCartItems } from "./slices/cart.slice";
 
 const App = () => {
-  const { pathname } = useLocation();
 
   const userId = JSON.parse(localStorage.getItem("userId"));
 
@@ -41,15 +41,18 @@ const App = () => {
     getSpecificCart();
   }, [userId]);
 
+  const { pathname } = useLocation();
   return (
     <Container>
       {pathname === "/sign-in" || pathname === "/sign-up" ? "" : <Header />}
       <main className="my-20 font-satoshi">
         <Routes>
-          <Route path="/" element={<h1>Home</h1>} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:id" element={<ProductPage />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<h1>Home</h1>} />
+            <Route path="products" element={<ProductsPage />} />
+            <Route path="products/:id" element={<ProductPage />} />
+            <Route path="cart" element={<CartPage />} />
+          </Route>
           <Route path="/sign-in" element={<SingIn />} />
           <Route path="/sign-up" element={<SignUp />} />
         </Routes>

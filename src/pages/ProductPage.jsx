@@ -16,6 +16,7 @@ const ProductPage = () => {
 
     setProduct(data);
   };
+  document.title = `${product?.name}`
 
   useEffect(() => {
     getProduct();
@@ -23,9 +24,9 @@ const ProductPage = () => {
 
   return (
     <div className="grid grid-cols-12 gap-10">
-      <ProductDetail product={product}/>
-      <ProductImage product={product}/>
-      <ProductFilter product={product}/>
+      <ProductDetail product={product} />
+      <ProductImage product={product} />
+      <ProductFilter product={product} />
     </div>
   );
 };
