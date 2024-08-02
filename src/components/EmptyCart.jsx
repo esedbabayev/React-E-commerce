@@ -1,8 +1,26 @@
 // Images
 import Empty from "../images/Empty.png";
 
+// Redux Hooks
+import { useSelector, useDispatch } from "react-redux";
+
+// Actions
+import { clearCategories } from "../slices/categories.slice";
+import { clearColors } from "../slices/colors.slice";
+
 const EmptyCart = () => {
+  const selectedCategories = useSelector(
+    (state) => state.categories.selectedCategories
+  );
+
+  const selectedColors = useSelector((state) => state.colors.selectedColors);
   
+  const dispatch = useDispatch();
+
+  const clearFilters = () => {
+    dispatch(clearCategories(selectedCategories));
+    dispatch(clearColors(selectedColors))
+  };
 
   return (
     <div className="col-span-9 flex flex-col items-center justify-center h-full">
@@ -16,7 +34,10 @@ const EmptyCart = () => {
         We could not find anything matching your <br /> needs. Try to look for
         something else
       </p>
-      <button className="uppercase font-black text-white bg-black text-medium px-4 py-3 rounded-lg transition-all duration-200 hover:bg-[#0075ff]">
+      <button
+        onClick={clearFilters}
+        className="uppercase font-black text-white bg-black text-medium px-4 py-3 rounded-lg transition-all duration-200 hover:bg-[#0075ff]"
+      >
         clear filters
       </button>
     </div>

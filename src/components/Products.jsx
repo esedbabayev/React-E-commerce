@@ -7,6 +7,8 @@ import EmptyCart from "./EmptyCart";
 // Actions
 import { setCategories } from "../slices/categories.slice";
 import { setColors } from "../slices/colors.slice";
+import { setSizes } from "../slices/sizes.slice";
+
 // Hooks
 import { useDispatch, useSelector } from "react-redux";
 
@@ -20,6 +22,8 @@ const Products = () => {
 
   const selectedColors = useSelector((state) => state.colors.selectedColors);
 
+  const selectedSizes = useSelector((state) => state.sizes.selectedSizes);
+
   const dispatch = useDispatch();
 
   const getProducts = async () => {
@@ -29,12 +33,14 @@ const Products = () => {
 
     const categories = [...new Set(data.map((product) => product.category))];
     const colors = [...new Set(data.map((product) => product.color))];
+    // const sizes = [...new Set(data.map((product) => product.size))];
 
     dispatch(setCategories(categories));
     dispatch(setColors(colors));
+    // dispatch(setSizes(sizes));
 
     setAllProducts(data);
-    setFilteredProducts(data); // Initially display all products
+    setFilteredProducts(data);
   };
 
   const filterProducts = () => {
@@ -52,6 +58,12 @@ const Products = () => {
       );
     }
 
+    if (selectedSizes.length > 0) {
+      products = products.filter((product) =>
+        selectedSizes.includes(product.size)
+      );
+    }
+
     setFilteredProducts(products);
   };
 
@@ -66,15 +78,14 @@ const Products = () => {
   return (
     <div className="col-span-9">
       <div className="mb-4">
-        <h1 className="font-medium">Showing {filteredProducts.length} results</h1>
+        <h1 className="font-medium">
+          Showing {filteredProducts.length} results
+        </h1>
       </div>
       {filteredProducts.length > 0 ? (
         <div className="grid grid-cols-12 gap-5">
           {filteredProducts.map((product) => (
-            <Product
-              key={product.id}
-              product={product}
-            />
+            <Product key={product.id} product={product} />
           ))}
         </div>
       ) : (

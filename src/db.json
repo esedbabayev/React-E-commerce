@@ -34,7 +34,7 @@
         "s",
         "l"
       ],
-      "category": "Shorts",
+      "category": "Shirts",
       "image": "https://static.bershka.net/assets/public/87d8/786c/9e6d4894ba4b/65dbd2a93fbf/06374494300-a4o/06374494300-a4o.jpg?ts=1719477628855&w=800"
     },
     {
@@ -185,25 +185,6 @@
   ],
   "carts": [
     {
-      "id": "884f99af-8210-4f98-9262-21a0a89f479d",
-      "quantity": 2,
-      "size": "xs",
-      "product": {
-        "id": "2",
-        "name": "Wide fit tailored Bermuda shorts",
-        "price": 29.99,
-        "color": "000",
-        "size": [
-          "xs",
-          "m",
-          "xl"
-        ],
-        "category": "Shorts",
-        "image": "https://static.bershka.net/4/photos2/2024/V/0/2/p/3344/602/800/3344602800_2_4_0.jpg?imwidth=800&ts=1715072276437"
-      },
-      "userId": "860fb82a-52f8-4b12-9182-fe95230c321a"
-    },
-    {
       "id": "8f3bf0af-05d7-45dc-9b74-3582a30a9282",
       "quantity": 5,
       "size": "m",
@@ -237,6 +218,25 @@
         ],
         "category": "Shirts",
         "image": "https://static.bershka.net/assets/public/d5f3/3399/64804dc9ac3e/0183e0630610/08003154800-a4o/08003154800-a4o.jpg?ts=1721031405642&w=800"
+      },
+      "userId": "860fb82a-52f8-4b12-9182-fe95230c321a"
+    },
+    {
+      "id": "65a79693-035b-43a3-bccd-faa246ee618a",
+      "quantity": 1,
+      "size": "m",
+      "product": {
+        "id": "9",
+        "name": "Hoodie",
+        "price": 22.99,
+        "color": "E5D7D5",
+        "size": [
+          "s",
+          "m",
+          "xl"
+        ],
+        "category": "Hoodies_Sweatshirts",
+        "image": "https://static.bershka.net/assets/public/1a44/9ef6/899f44c9a86c/453aac5526c9/07368190902-a4o/07368190902-a4o.jpg?ts=1719405845538&w=800"
       },
       "userId": "860fb82a-52f8-4b12-9182-fe95230c321a"
     }

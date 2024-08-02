@@ -7,6 +7,10 @@ const sizeSlice = createSlice({
     selectedSizes: [],
   },
   reducers: {
+    // setSizes: (state, action) => {
+    //   const sizes = action.payload;
+    //   state.sizes = sizes;
+    // },
     selectSizes: (state, action) => {
       const size = action.payload;
 
@@ -23,6 +27,6 @@ const sizeSlice = createSlice({
   },
 });
 
-export const { selectSizes } = sizeSlice.actions;
+export const { setSizes, selectSizes } = sizeSlice.actions;
 
 export default sizeSlice;

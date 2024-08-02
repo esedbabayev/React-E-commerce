@@ -24,9 +24,16 @@ const colorSlice = createSlice({
         );
       }
     },
+    clearColors: (state, action) => {
+      const selectedColors = action.payload;
+
+      const clearedColors = state.selectedColors;
+
+      if (clearedColors.length) clearedColors.splice(0, clearedColors.length);
+    },
   },
 });
 
-export const { setColors, selectColors } = colorSlice.actions;
+export const { setColors, selectColors, clearColors } = colorSlice.actions;
 
 export default colorSlice;

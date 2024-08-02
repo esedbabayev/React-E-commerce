@@ -23,9 +23,16 @@ const categorySlice = createSlice({
         );
       }
     },
+    clearCategories: (state, action) => {
+      const selectedCategories = action.payload;
+      const clearedCategories = state.selectedCategories;
+
+      if (clearedCategories.length)
+        clearedCategories.splice(0, clearedCategories.length);
+    },
   },
 });
 
-export const { setCategories, selectCategories } = categorySlice.actions;
+export const { setCategories, selectCategories, clearCategories } = categorySlice.actions;
 
 export default categorySlice;
